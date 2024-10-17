@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="signup-sidebar">
+      <h2>Create Account</h2>
+      <form [formGroup]="signupform" class="signup-form">
+          <div class="input-group">
+              <label for="name">Name</label>
+              <input id="name" type="text" formControlName="name" placeholder="Enter your name"/>
+              <p-message *ngIf="signupform.controls['name'].invalid && signupform.controls['name'].touched" severity="error" text="Name is required"></p-message>
+          </div>
+          <div class="input-group">
+              <label for="email">Email</label>
+              <input id="email" type="email" formControlName="email" placeholder="Enter your email"/>
+              <p-message *ngIf="signupform.controls['email'].invalid && signupform.controls['email'].touched" severity="error" text="Valid email is required"></p-message>
+          </div>
+          <div class="input-group">
+              <label for="password">Password</label>
+              <input id="password" type="password" formControlName="password" placeholder="Create a password"/>
+              <p-message *ngIf="signupform.controls['password'].invalid && signupform.controls['password'].touched" severity="error" text="Password must be at least 6 characters long"></p-message>
+          </div>
+          <div class="input-group">
+              <label for="confirmPassword">Confirm Password</label>
+              <input id="confirmPassword" type="password" formControlName="confirmPassword" placeholder="Confirm your password"/>
+              <p-message *ngIf="signupform.errors?.['mismatch'] && signupform.controls['confirmPassword'].touched" severity="error" text="Passwords do not match"></p-message>
+          </div>
+          <button pButton type="submit" (click)="verifyMail()">Sign Up</button>
+      </form>
+  </div>
+  <div class="background-section"></div>
+</div>
